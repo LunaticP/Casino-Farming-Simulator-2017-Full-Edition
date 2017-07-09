@@ -9,29 +9,32 @@ function graph()
 function num()
 {
 	var val;
-	var pos;
 	var col;
 
-	this.pos = {x:100,y:100};
 	this.setRand = function()
 	{
 		this.col = {r:0,g:0,b:0};
-		this.val = floor(random(0,15.99999));
+		this.val = floor(random(0,14.99999));
 		if(this.val > 0 && this.val < 8)
 			this.col.r = 255;
 		else if (this.val == 0)
 			this.col.g = 255;
 	}
-	this.show = function()
+	this.show = function(vx, vy)
 	{
-	    noStroke();
-		textAlign(CENTER,CENTER);
-		fill(this.col.r, this.col.g, this.col.b);
-		ellipse(this.pos.x, this.pos.y, 50, 50);
-		fill(255);
-		textSize(20);
-		textStyle(BOLD);
-		text(this.val,this.pos.x,this.pos.y);
+	    if (vx && vy)
+	    {
+            noStroke();
+            textAlign(CENTER, CENTER);
+            fill(this.col.r, this.col.g, this.col.b);
+            rect(vx - 25, vy - 25, 50, 50);
+            fill(255);
+            textSize(22);
+            textStyle(BOLD);
+            text(this.val, vx, vy);
+        }
+        else
+            console.log("undefined position");
 	}
 }
 /*
@@ -62,22 +65,50 @@ function particle() {
 	}
 }*/
 
+function showLast(tab, size)
+{
+   for (var len = tab.length; len > tab.length - size && len > 0; len--)
+        tab[len - 1].show(400 - (tab.length - len) * 75, 175);
+}
 
 function setup() {
-	createCanvas(500,500);
-	frameRate(3);
+	createCanvas(1000,1000);
+    background(255);
+	frameRate(2);
 	j = 0;
 }
 
-var v1 = new num();
 var tab = [];
+var suites = {R:[],B:[],G:[]};
+
+function checkStatus(num)
+{
+    if (num == 0)
+        return (0);
+    if (num < 0 && num < 8)
+        return (1);
+    return (2);
+}
+
+function analyzeTab()
+{
+    var len = tab.length;
+    var status = checkStatus(tab[len]);
+
+    while()
+    {
+
+        len --;
+    }
+}
 
 function draw()
 {
-	background(255);
-	v1.setRand();
-	tab[j] = v1.val;
+	tab[j] = new num();
+	tab[j].setRand();
+	tab[j].show(100, 100);
+	showLast(tab, 5);
+	analyzeTab();
 	j++;
-	v1.show();
 	console.log(tab);
 }
