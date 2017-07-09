@@ -10,16 +10,23 @@ function num()
 {
 	var val;
 	var pos;
+	var col;
+
 	this.pos = {x:100,y:100};
 	this.setRand = function()
 	{
+		this.col = {r:0,g:0,b:0};
 		this.val = floor(random(0,15.99999));
+		if(this.val > 0 && this.val < 8)
+			this.col.r = 255;
+		else if (this.val == 0)
+			this.col.g = 255;
 	}
 	this.show = function()
 	{
 	    noStroke();
 		textAlign(CENTER,CENTER);
-		fill(255, 0, 0);
+		fill(this.col.r, this.col.g, this.col.b);
 		ellipse(this.pos.x, this.pos.y, 50, 50);
 		fill(255);
 		textSize(20);
