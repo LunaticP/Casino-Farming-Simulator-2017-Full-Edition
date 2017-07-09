@@ -10,14 +10,14 @@ function num()
 {
 	var val;
 	var pos;
-	this.pos = {x:10,y:10};
+	this.pos = {x:100,y:100};
 	this.setRand = function()
 	{
 		this.val = floor(random(0,15.99999));
 	}
 	this.show = function()
 	{
-		noStroke();
+	    noStroke();
 		textAlign(CENTER,CENTER);
 		fill(255, 0, 0);
 		ellipse(this.pos.x, this.pos.y, 50, 50);
@@ -58,14 +58,19 @@ function particle() {
 
 function setup() {
 	createCanvas(500,500);
+	frameRate(3);
+	j = 0;
 }
 
 var v1 = new num();
+var tab = [];
 
-function draw() {
+function draw()
+{
 	background(255);
-		v1.setRand();
-		v1.show();
-		v1.pos.x++;
-		v1.pos.y++;
+	v1.setRand();
+	tab[j] = v1.val;
+	j++;
+	v1.show();
+	console.log(tab);
 }
