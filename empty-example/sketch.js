@@ -1,6 +1,6 @@
 new p5();
 
-function graph()
+function gauge(w, h)
 {
 
 
@@ -16,7 +16,7 @@ function num()
 	this.setRand = function()
 	{
 		this.col = {r:0,g:0,b:0};
-		this.val = floor(random(0,15.99999));
+		this.val = floor(random(0,14.99999));
 		if(this.val > 0 && this.val < 8)
 			this.col.r = 255;
 		else if (this.val == 0)
