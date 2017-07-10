@@ -96,6 +96,9 @@ function draw()
     gGraph.showH(45, 1500, tab.length, 685, 87, color(0, 255, 0), 200, 2);
     rGraph.showH(45, 1500, tab.length, 685, 137, color(255, 0, 0), 200, 2);
     bGraph.showH(45, 1500, tab.length, 685, 187, color(0), 200, 2);
+	gGraph.showC(300, tab.length, 685, 537, color(0, 255, 0), 0, 2 * PI / 3);
+	rGraph.showC(300, tab.length, 685, 537, color(255, 0, 0),2 * PI / 3, 4 * PI / 3);
+	bGraph.showC(300, tab.length, 685, 537, color(0),4 * PI / 3, 0);
     textAlign(LEFT, TOP);
     fill(255);
     text((elem[0] / j * 100).toFixed(2), 700, 100, 50, 50);

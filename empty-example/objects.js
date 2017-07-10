@@ -15,6 +15,15 @@ function gauge()
         fill(col);
         rect(px, py, ((this.amount / maxv) * size), w);
     };
+	this.showC = function (size, maxv, px, py, col, start, end)
+	{
+		fill(col);
+//		noFill();
+//		strokeWeight(2);
+	//	stroke(col);
+		arc(px,py,(this.amount / maxv) * size,(this.amount / maxv) * size,
+		start,end);
+	}
 }
 
 function num()
