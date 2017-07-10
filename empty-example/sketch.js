@@ -23,6 +23,19 @@ function circleGraph(table, rad, col, posx, posy)
 
 }
 
+function barGraph(table, range, height, col, posx, posy)
+{
+    var len = 0;
+    var wid = range / table.length
+
+    fill(col);
+    while (len <= table.length)
+    {
+        rect(posx + wid * len, posy, wid - 3, -table[len] / table[0] * height);
+        len++;
+    }
+}
+
 function showLast(tab, size)
 {
    for (var len = tab.length; len > tab.length - size && len > 0; len--)
@@ -95,8 +108,8 @@ function draw()
     gGraph.showV(50, 1500, tab.length, 100, 600, color(0, 255, 0));
     rGraph.showV(50, 1500, tab.length, 155, 600, color(255, 0, 0));
     bGraph.showV(50, 1500, tab.length, 210, 600, color(0));
-    circleGraph(suites[0], 100, color(0, 255, 0), 700, 700);
-    circleGraph(suites[1], 100, color(255, 0, 0), 900, 700);
-    circleGraph(suites[2], 100, color(0), 1100, 700);
+    barGraph(suites[0], 100, 300, color(0, 255, 0), 800, 700);
+    barGraph(suites[1], 200, 300, color(255, 0, 0), 902, 700);
+    barGraph(suites[2], 200, 300, color(0), 1104, 700);
 	j++;
 }
