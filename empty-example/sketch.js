@@ -114,13 +114,13 @@ function setup() {
 function draw()
 {
     background(255);
-	tab[j] = new num();
-	tab[j].setRand();
-	tab[j].show(100, 100);
-	showLast(tab, 5);
-	if (j > 0 && checkStatus(tab[j].val) !== checkStatus(tab[j - 1].val))
-	    analyzeTab();
-	elem[checkStatus(tab[j].val)]++;
+    tab[j] = new num();
+    tab[j].setRand();
+    tab[j].show(100, 100);
+    showLast(tab, 5);
+    if (j > 0 && checkStatus(tab[j].val) !== checkStatus(tab[j - 1].val))
+        analyzeTab();
+    elem[checkStatus(tab[j].val)]++;
 	fill(255, 0, 255);
 	text(j, 500, 100, 50, 50);
     fill(0,255, 0);
@@ -133,5 +133,5 @@ function draw()
     //console.log(suites[1]);
     //console.log(suites[2]);
     //console.log("---------------------------------");
-	j++;
+    j++;
 }
