@@ -1,5 +1,9 @@
 new p5();
 
+var tab = [];
+var suites = [[], [], []];
+var elem = [0, 0, 0];
+
 function gauge()
 {
 	var amount;
@@ -87,30 +91,38 @@ function setup() {
 
 var tab = [];
 var rGraph = new gauge();
-/*
-var suites = {R:[],B:[],G:[]};
+
 
 function checkStatus(num)
 {
-    if (num == 0)
-        return (0);
-    if (num < 0 && num < 8)
-        return (1);
-    return (2);
+    var out;
+
+    if (num === 0)
+        out = 0;
+    if (num > 0 && num < 8)
+        out = 1;
+    if (num > 7)
+        out = 2;
+    return (out);
 }
 
 function analyzeTab()
 {
-    var len = tab.length;
-    var status = checkStatus(tab[len]);
+    var rep = 0;
+    var len = tab.length - 2;
+    var status = checkStatus(tab[len].val);
 
-    while()
+    while (len > 0 && checkStatus(tab[len - 1].val) === status)
     {
-
-        len --;
+        rep++;
+        len--;
     }
+    if (suites[status][rep])
+        (suites[status][rep])++;
+    else
+        suites[status][rep] = 1;
 }
-*/
+
 function draw()
 {
 	background(255);
@@ -118,10 +130,27 @@ function draw()
 	tab[j].setRand();
 	tab[j].show(100, 100);
 	showLast(tab, 5);
+
 	if (tab[j].col.r == 255)
 		rGraph.amount++;
 	rGraph.show(200, 200, tab.length, 400, 400);
 //	analyzeTab();
-	j++;
 //	console.log(tab);
+
+	if (j > 0 && checkStatus(tab[j].val) !== checkStatus(tab[j - 1].val))
+	    analyzeTab();
+	elem[checkStatus(tab[j].val)]++;
+	fill(255, 0, 255);
+	text(j, 500, 100, 50, 50);
+    fill(0,255, 0);
+    text((elem[0] / j * 100).toFixed(2), 700, 100, 50, 50);
+    fill(255, 0, 0);
+    text((elem[1] / j * 100).toFixed(2), 700, 150, 50, 50);
+    fill(0);
+    text((elem[2] / j * 100).toFixed(2), 700, 200, 50, 50);
+	//console.log(suites[0]);
+    //console.log(suites[1]);
+    //console.log(suites[2]);
+    //console.log("---------------------------------");
+	j++;
 }
