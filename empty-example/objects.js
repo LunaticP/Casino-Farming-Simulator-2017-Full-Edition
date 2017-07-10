@@ -17,7 +17,6 @@ function gauge()
     };
 }
 
-
 function num()
 {
 	var val;

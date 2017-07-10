@@ -7,7 +7,6 @@ var gGraph = new gauge();
 var rGraph = new gauge();
 var bGraph = new gauge();
 
-
 function circleGraph(table, rad, col, posx, posy)
 {
     var len = 0;
