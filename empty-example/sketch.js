@@ -1,10 +1,17 @@
 new p5();
 
-function gauge(w, h)
+function gauge()
 {
+	var amount;
 
-
+	this.amount = 0;
+	this.show = function (w, size, maxv, px, py)
+	{
+		fill(255,0,0);
+		rect(px - w, py - ((this.amount / maxv) * size),px,py);
+	}
 }
+
 
 function num()
 {
@@ -79,6 +86,8 @@ function setup() {
 }
 
 var tab = [];
+var rGraph = new gauge();
+/*
 var suites = {R:[],B:[],G:[]};
 
 function checkStatus(num)
@@ -101,14 +110,18 @@ function analyzeTab()
         len --;
     }
 }
-
+*/
 function draw()
 {
+	background(255);
 	tab[j] = new num();
 	tab[j].setRand();
 	tab[j].show(100, 100);
 	showLast(tab, 5);
-	analyzeTab();
+	if (tab[j].col.r == 255)
+		rGraph.amount++;
+	rGraph.show(200, 200, tab.length, 400, 400);
+//	analyzeTab();
 	j++;
-	console.log(tab);
+//	console.log(tab);
 }
