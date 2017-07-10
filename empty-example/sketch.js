@@ -23,9 +23,6 @@ function circleGraph(table, rad, col, posx, posy)
 
 }
 
-
-}
-
 function showLast(tab, size)
 {
    for (var len = tab.length; len > tab.length - size && len > 0; len--)

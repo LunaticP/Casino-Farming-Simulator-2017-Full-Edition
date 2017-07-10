@@ -3,12 +3,20 @@ function gauge()
 	var amount;
 
 	this.amount = 0;
-	this.show = function (w, size, maxv, px, py)
+	this.showV = function (w, size, maxv, px, py, col)
 	{
-		fill(255,0,0);
-		rect(px - w, py - ((this.amount / maxv) * size),px,py);
-	}
+	    fill(col);
+		rect(px, py, w, -((this.amount / maxv) * size));
+	};
+    this.showH = function (w, size, maxv, px, py, col, bg, pad)
+    {
+        fill(bg);
+        rect(px - pad, py - pad, ((this.amount / maxv) * size) + pad * 2, w + pad * 2);
+        fill(col);
+        rect(px, py, ((this.amount / maxv) * size), w);
+    };
 }
+
 
 function num()
 {
